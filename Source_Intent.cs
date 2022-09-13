@@ -1,0 +1,12 @@
+result += All.FindByName("*getIntent");
+CxList callbacks = All.FindByName("*onActivityResult");
+callbacks += All.FindByName("*onHandleIntent");
+callbacks += All.FindByName("*onStartCommand");
+callbacks += All.FindByName("*onReceive");
+callbacks += All.FindByName("*onNewIntent");
+callbacks += All.FindByName("*onStart");
+callbacks += All.FindByName("*onBind");
+callbacks += All.FindByName("*onUnbind");
+callbacks += All.FindByName("*onRebind");
+callbacks += All.FindByName("*onTaskRemoved");
+result += All.GetParameters(callbacks.GetAncOfType(typeof(MethodDecl))).FindByType("Intent");

@@ -1,0 +1,9 @@
+CxList source = Source_Android_All();
+CxList sink = All.FindByName("*FileOutputStream*");
+sink += All.FindByName("*FileWriter*");
+sink += All.FindByName("*DownloadManager.Request");
+sink += All.FindByName("*setDestinationUri").FindByType(typeof(MethodInvokeExpr));;
+sink += All.FindByName("*setDestinationInExternalFilesDir").FindByType(typeof(MethodInvokeExpr));;
+sink += All.FindByName("*setDestinationInExternalPublicDir").FindByType(typeof(MethodInvokeExpr));;
+result += sink.DataInfluencedBy(source);
+result += sink & source.FindByType(typeof(Param));

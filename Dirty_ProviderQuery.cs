@@ -1,0 +1,10 @@
+CxList source = Source_Android_All() - All.FindByName("Uri.parse");
+CxList sink = All.FindByMemberAccess("*ContentResolver.query");
+sink.Add(All.FindByMemberAccess("*getContentResolver.query"));
+sink.Add(All.FindByMemberAccess("*getContentResolver.call"));
+sink.Add(All.FindByMemberAccess("*ContentResolver.call"));
+CxList uriSink = All.GetParameters(sink).FindByType("Uri");
+CxList bundleSink = All.GetParameters(sink).FindByType("Bundle");
+sink = uriSink + bundleSink;
+result += sink.DataInfluencedBy(source);
+result += sink & source.FindByType(typeof(Param));
